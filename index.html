@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<title>Student Attendance Login</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Attendance Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>Student Attendance</h1>
+
+        <p>Management System</p>
+
+        <form id="loginForm">
+
+            <label>Student ID</label>
+
+            <input
+                type="text"
+                id="studentId"
+                placeholder="Enter Student ID"
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+            >
+
+            <button type="submit">Login</button>
+
+            <p id="message"></p>
+
+        </form>
+
+    </div>
+
+
+    <script>
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let studentId = document.getElementById("studentId").value;
+            let password = document.getElementById("password").value;
+            let message = document.getElementById("message");
+
+
+            if (studentId === "" || password === "") {
+
+                message.textContent = "Please enter Student ID and Password.";
+                message.style.color = "red";
+
+            }
+
+            else if (studentId === "STU101" && password === "12345") {
+
+                message.textContent = "Login successful!";
+                message.style.color = "green";
+
+                setTimeout(function() {
+                    window.location.href = "dashboard.html";
+                }, 800);
+
+            }
+
+            else {
+
+                message.textContent = "Invalid Student ID or Password.";
+                message.style.color = "red";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

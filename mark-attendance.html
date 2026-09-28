@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Student Attendance</h2>
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="mark-attendance.html">Mark Attendance</a>
+        <a href="view-attendance.html">View Attendance</a>
+        <a href="profile.html">Profile</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <h1>Mark Attendance</h1>
+        <p class="welcome">Record your attendance</p>
+
+        <div class="attendance-box">
+
+            <h2>Attendance Form</h2>
+
+            <form id="attendanceForm">
+
+                <label>Student Name</label>
+                <input type="text" value="Anu Keerthana" readonly>
+
+                <label>Student ID</label>
+                <input type="text" value="STU101" readonly>
+
+                <label>Subject</label>
+                <select id="subject">
+                    <option value="">Select Subject</option>
+                    <option>Java Programming</option>
+                    <option>Data Structures</option>
+                    <option>Computer Networks</option>
+                    <option>Database Management System</option>
+                </select>
+
+                <label>Date</label>
+                <input type="date" id="date">
+
+                <label>Attendance Status</label>
+
+                <div class="status-options">
+                    <label>
+                        <input type="radio" name="status" value="Present">
+                        Present
+                    </label>
+
+                    <label>
+                        <input type="radio" name="status" value="Absent">
+                        Absent
+                    </label>
+                </div>
+
+                <button type="submit">Save Attendance</button>
+
+                <p id="attendanceMessage"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("attendanceForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let subject = document.getElementById("subject").value;
+    let date = document.getElementById("date").value;
+    let status = document.querySelector('input[name="status"]:checked');
+    let message = document.getElementById("attendanceMessage");
+
+    if (subject === "" || date === "" || status === null) {
+
+        message.textContent = "Please fill all attendance details.";
+        message.style.color = "red";
+
+    } else {
+
+        message.textContent = "Attendance saved successfully!";
+        message.style.color = "green";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
